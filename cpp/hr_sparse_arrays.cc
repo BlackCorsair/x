@@ -31,7 +31,8 @@ int checkVectors(std::vector<int>& v1, std::vector<int>& v2)
     return 1;
 }
 
-void printVector(std::vector<int> v1)
+template<typename T>
+void printVector(std::vector<T> v1)
 {
     std::cout << "{";
     for (int i = 0; i < v1.size(); ++i)
