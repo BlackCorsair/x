@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 const std::vector<int> matchingStrings(std::vector<std::string>& strings, 
                                         std::vector<std::string>& queries)
@@ -19,16 +20,13 @@ const std::vector<int> matchingStrings(std::vector<std::string>& strings,
     return matches;
 }
 
-int checkVectors(std::vector<int>& v1, std::vector<int>& v2)
+template<typename T>
+int checkVectors(std::vector<T>& v1, std::vector<T>& v2)
 {
-    if (v1.size() != v2.size())
-        return -1;
-    for (int i = 0; i < v1.size(); ++i)
-    {
-        if (v1.at(i) != v2.at(i))
-            return -1;
-    }
-    return 1;
+    if(v1.size() == v2.size() && 
+        std::equal(v1.begin(), v1.end(), v2.begin()))
+        return 1;
+    return -1;
 }
 
 template<typename T>
