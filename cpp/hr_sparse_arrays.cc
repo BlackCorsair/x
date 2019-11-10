@@ -32,17 +32,9 @@ int checkVectors(std::vector<T>& v1, std::vector<T>& v2)
 template<typename T>
 void printVector(std::vector<T> v1)
 {
-    std::cout << "{";
-    for (int i = 0; i < v1.size(); ++i)
-    {
-        if (i != v1.size() - 1)
-        {
-            std::cout << v1.at(i) << ", ";
-        } else {
-            std::cout << v1.at(i);
-        }
-    }
-    std::cout << "}" << std::endl;
+    for(auto& elem : v1)
+        std::cout << elem << " ";
+    std::cout << std::endl;
 }
 
 void testMatchingStrings(std::vector<std::string>& strings,
