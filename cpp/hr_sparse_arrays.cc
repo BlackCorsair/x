@@ -71,6 +71,13 @@ int main(void)
     std::vector<std::string> str1{"aba", "baba", "aba", "xzxb"};
     std::vector<std::string> q1{"aba", "xzxb", "ab"};
     std::vector<int> r1{2, 1, 0};
+
+    std::vector<std::string> str2{"ab", "abc", "ab"};
+    std::vector<std::string> q2{"ab", "abc", "bd"};
+    std::vector<int> r2{2, 1, 0};
+    
     testMatchingStrings(str1, q1, r1);
+    testMatchingStrings(str2, q2, r2);
+    
     return 0;
 }
