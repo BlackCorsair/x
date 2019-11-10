@@ -16,9 +16,9 @@ const std::vector<int> matchingStrings(std::vector<std::string>& strings, std::v
 
 As the acronym says, first make the tests, but do not rush into it as you may need to refactor multiple times your tests if you don't think them first!
 
-### Think what do you need to test
+### Think about what you need to test
 
-We need to check that out function which returns -> ```std::vector<int> matches``` matches another expected vector, so we should make a function that compares vectors and gives us an ok or a nok:
+We need to check that our function which returns -> ```std::vector<int> matches``` matches another expected vector, so we should make a function that compares vectors and gives us an ok or a nok:
 
 ```cpp
 #include <iostream>
@@ -166,7 +166,7 @@ int main(void)
 
     std::vector<std::string> str2{"ab", "abc", "ab"};
     std::vector<std::string> q2{"ab", "abc", "bd"};
-    std::vector<int> r2{2, 1};
+    std::vector<int> r2{2, 1, 0};
     
     testMatchingStrings(str1, q1, r1);
     testMatchingStrings(str2, q2, r2);
