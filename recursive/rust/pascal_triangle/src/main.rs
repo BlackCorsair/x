@@ -1,3 +1,14 @@
+fn main() {
+    let triangle = pascal_triangle(10);
+    let tabs = triangle.len();
+    for index in 0..triangle.len() {
+        for _ in 0..((tabs - index)) {
+            print!("  ");
+        }
+        println!("{:?}", triangle[index]);
+    }
+}
+
 // https://en.wikipedia.org/wiki/Pascal%27s_triangle
 fn pascal_triangle(depth: i32) -> Vec<Vec<i32>> {
     if depth == 1 {
