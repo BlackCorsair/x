@@ -1,7 +1,3 @@
-fn main() {
-    println!("Hello, world!");
-}
-
 // sum pair of numbers in array
 fn sum_pairs_in_list(list: Vec<i32>) -> i32 {
     // base case
