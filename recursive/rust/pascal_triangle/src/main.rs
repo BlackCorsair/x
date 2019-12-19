@@ -1,5 +1,5 @@
 fn main() {
-    let triangle = pascal_triangle(10);
+    let triangle = pascal_triangle(32);
     let tabs = triangle.len();
     for index in 0..triangle.len() {
         for _ in 0..((tabs - index)) {
@@ -23,7 +23,7 @@ fn pascal_triangle(depth: i32) -> Vec<Vec<i32>> {
     let mut row: Vec<i32> = Vec::new();
     row.push(1);
     row.extend(sum_pairs_in_list(
-        pascal_triangle(depth - 1).last().clone().unwrap().to_vec(),
+        triangle.last().clone().unwrap().to_vec(),
     ));
     row.push(1);
     triangle.push(row);
