@@ -11,24 +11,24 @@ fn main() {
 
 // https://en.wikipedia.org/wiki/Pascal%27s_triangle
 fn pascal_triangle(depth: i32) -> Vec<Vec<i32>> {
-    if depth == 1 {
-        return vec![vec![1]];
-    }
-    if depth == 2 {
-        return vec![vec![1], vec![1, 1]];
-    }
-    let mut triangle: Vec<Vec<i32>> = Vec::new();
-    triangle.extend(pascal_triangle(depth - 1));
+    return match depth {
+        1 => vec![vec![1]],
+        2 => vec![vec![1], vec![1, 1]],
+        _ => {
+            let mut triangle: Vec<Vec<i32>> = Vec::new();
+            triangle.extend(pascal_triangle(depth - 1));
 
-    let mut row: Vec<i32> = Vec::new();
-    row.push(1);
-    row.extend(sum_pairs_in_list(
-        triangle.last().clone().unwrap().to_vec(),
-    ));
-    row.push(1);
-    triangle.push(row);
+            let mut row: Vec<i32> = Vec::new();
+            row.push(1);
+            row.extend(sum_pairs_in_list(
+                triangle.last().clone().unwrap().to_vec(),
+            ));
+            row.push(1);
+            triangle.push(row);
 
-    return triangle;
+            return triangle;
+        }
+    }
 }
 
 // pascal_triangle base case 1
@@ -110,14 +110,15 @@ fn test_pascal_triangle_general_case_len_3() {
 
 // sum pair of numbers in array
 fn sum_pairs_in_list(list: Vec<i32>) -> Vec<i32> {
-    // base case
-    if list.len() == 2 {
-        return vec![list[0] + list[1]];
+    return match list.len() {
+        2 => vec![list[0] + list[1]],
+        _ => {
+            let mut sum: Vec<i32> = Vec::new();
+            sum.push(list[0] + list[1]);
+            sum.extend(sum_pairs_in_list(list[1..].to_vec()));
+            return sum;
+        }
     }
-    let mut sum: Vec<i32> = Vec::new();
-    sum.push(list[0] + list[1]);
-    sum.extend(sum_pairs_in_list(list[1..].to_vec()));
-    return sum;
 }
 
 // base case: fn([2, 2]) = [4]
