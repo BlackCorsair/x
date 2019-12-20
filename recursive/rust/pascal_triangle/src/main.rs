@@ -2,7 +2,7 @@ fn main() {
     let triangle = pascal_triangle(32);
     let tabs = triangle.len();
     for index in 0..triangle.len() {
-        for _ in 0..((tabs - index)) {
+        for _ in 0..(tabs - index) {
             print!("  ");
         }
         println!("{:?}", triangle[index]);
@@ -20,15 +20,13 @@ fn pascal_triangle(depth: i32) -> Vec<Vec<i32>> {
 
             let mut row: Vec<i32> = Vec::new();
             row.push(1);
-            row.extend(sum_pairs_in_list(
-                triangle.last().clone().unwrap().to_vec(),
-            ));
+            row.extend(sum_pairs_in_list(triangle.last().clone().unwrap().to_vec()));
             row.push(1);
             triangle.push(row);
 
             return triangle;
         }
-    }
+    };
 }
 
 // pascal_triangle base case 1
@@ -118,7 +116,7 @@ fn sum_pairs_in_list(list: Vec<i32>) -> Vec<i32> {
             sum.extend(sum_pairs_in_list(list[1..].to_vec()));
             return sum;
         }
-    }
+    };
 }
 
 // base case: fn([2, 2]) = [4]
