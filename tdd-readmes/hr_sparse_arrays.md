@@ -26,12 +26,9 @@ We need to check that our function which returns -> ```std::vector<int> matches`
 #include <string>
 
 template<typename T>
-int checkVectors(std::vector<T>& v1, std::vector<T>& v2)
+bool checkVectors(std::vector<T>& v1, std::vector<T>& v2)
 {
-    if(v1.size() == v2.size() && 
-        std::equal(v1.begin(), v1.end(), v2.begin()))
-        return 1;
-    return -1;
+    return v1.size() == v2.size() &&  std::equal(v1.begin(), v1.end(), v2.begin());
 }
 ```
 
@@ -51,18 +48,18 @@ void printVector(std::vector<T> v1)
 }
 
 void testMatchingStrings(std::vector<std::string>& strings,
-                            std::vector<std::string>& queries, 
+                            std::vector<std::string>& queries,
                             std::vector<int>& wanted)
 {
     std::vector<int> got (matchingStrings(strings, queries));
-    
+
     if (checkVectors(wanted, got) == -1)
     {
         std::cout << "not passed" << std::endl;
-        
+
         std::cout << "wanted: " << std::endl;
         printVector(wanted);
-        
+
         std::cout << "got: " << std::endl;
         printVector(got);
     } else {
@@ -80,7 +77,7 @@ You should write the minimum required code to make sure your code **fails succes
 ```cpp
 ...
 
-const std::vector<int> matchingStrings(std::vector<std::string>& strings, 
+const std::vector<int> matchingStrings(std::vector<std::string>& strings,
                                         std::vector<std::string>& queries)
 {
     std::vector<int> matches{0, 0, 0};
@@ -95,9 +92,9 @@ int main(void)
     std::vector<std::string> str1{"aba", "baba", "aba", "xzxb"};
     std::vector<std::string> q1{"aba", "xzxb", "ab"};
     std::vector<int> r1{2, 1, 0};
-    
+
     testMatchingStrings(str1, q1, r1);
-    
+
     return 0;
 }
 ```
@@ -120,7 +117,7 @@ Write the minimum amount of code to pass your tests:
 ```cpp
 ...
 
-const std::vector<int> matchingStrings(std::vector<std::string>& strings, 
+const std::vector<int> matchingStrings(std::vector<std::string>& strings,
                                         std::vector<std::string>& queries)
 {
     std::vector<int> matches{2, 1, 0};
@@ -138,7 +135,7 @@ You could commit this code... or just skip to the part where you actually add re
 ```cpp
 ...
 
-const std::vector<int> matchingStrings(std::vector<std::string>& strings, 
+const std::vector<int> matchingStrings(std::vector<std::string>& strings,
                                         std::vector<std::string>& queries)
 {
     std::vector<int> matches{0, 0, 0};
@@ -157,10 +154,10 @@ int main(void)
     std::vector<std::string> str2{"ab", "abc", "ab"};
     std::vector<std::string> q2{"ab", "abc", "bd"};
     std::vector<int> r2{2, 1, 0};
-    
+
     testMatchingStrings(str1, q1, r1);
     testMatchingStrings(str2, q2, r2);
-    
+
     return 0;
 }
 ```
@@ -175,7 +172,7 @@ got:
 0 0 0
 ```
 
-We could have more detailed logs... but that's a problem for our future ourselves ;) 
+We could have more detailed logs... but that's a problem for our future ourselves ;)
 
 Commit your new test cases.
 
@@ -184,7 +181,7 @@ Commit your new test cases.
 ```cpp
 ...
 
-const std::vector<int> matchingStrings(std::vector<std::string>& strings, 
+const std::vector<int> matchingStrings(std::vector<std::string>& strings,
                                         std::vector<std::string>& queries)
 {
     std::vector<int> matches(queries.size(), 0);
