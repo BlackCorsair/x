@@ -13,7 +13,7 @@ int pow(int a)
 }
 
 template<typename Iterator, typename T>
-int sumList(Iterator begin, Iterator end, T fn)
+int sumList(const Iterator& begin, const Iterator& end, const T fn)
 {
     if (begin + 1 == end) { return *begin; }
     return add(*begin, sumList(begin + 1, end, fn), fn);
