@@ -74,8 +74,14 @@ four_magic_number(const std::vector<int>& digits)
 int
 main(int argc, char const* argv[])
 {
-  std::vector<int> digits{ 1, 5, 4, 7 };
-  int number = 1547;
+  if (argc < 2)
+  {
+    std::cout << "You need to provide a number!!!" << std::endl;
+    std::cout << "example: <executable> 1234" << std::endl;
+    return -1;
+  }
+
+  std::vector<int> digits = int_to_vector(atoi(argv[1]));
 
   four_magic_number(digits);
 
