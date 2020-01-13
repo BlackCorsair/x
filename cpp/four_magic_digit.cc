@@ -24,12 +24,10 @@ int vector_to_int(const std::vector<int> &vector) {
 std::vector<int> int_to_vector(int number) {
   std::vector<int> result{};
 
-  while (number > 10) {
+  while (number > 0) {
     result.insert(result.begin(), number % 10);
     number = number / 10;
   }
-
-  result.insert(result.begin(), number);
 
   if (result.size() < 4) {
     result.insert(result.begin(), 0);
@@ -52,15 +50,14 @@ std::vector<int> four_magic_number(const std::vector<int> &digits) {
   std::sort(descend.begin(), descend.end());
   int descend_number = vector_to_int(descend);
 
-  int magic_number = (ascend_number < descend_number)
-                         ? descend_number - ascend_number
-                         : ascend_number - descend_number;
-  std::vector<int> magic_digits = int_to_vector(magic_number);
+  std::vector<int> magic_digits = int_to_vector(
+      (ascend_number < descend_number) ? descend_number - ascend_number
+                                       : ascend_number - descend_number);
 
-  std::cout << "Given: ";
+  std::cout << "\nGiven: ";
   print_vector(digits);
-  std::cout << "Magic number calculated is: " << magic_number << std::endl;
-  std::cout << std::endl;
+  std::cout << "Magic number calculated is: ";
+  print_vector(magic_digits);
 
   return four_magic_number(magic_digits);
 }
